@@ -1,5 +1,5 @@
-use std::marker::PhantomData;
 use halo2_proofs::{arithmetic::FieldExt, circuit::*, plonk::*, poly::Rotation};
+use std::marker::PhantomData;
 
 #[derive(Debug, Clone)]
 struct FibonacciConfig {
@@ -72,14 +72,16 @@ impl<F: FieldExt> FibonacciChip<F> {
                     self.config.instance,
                     0,
                     self.config.col_a,
-                    0)?;
+                    0,
+                )?;
 
                 let b_cell = region.assign_advice_from_instance(
                     || "f(1)",
                     self.config.instance,
                     1,
                     self.config.col_b,
-                    0)?;
+                    0,
+                )?;
 
                 let c_cell = region.assign_advice(
                     || "a + b",
@@ -105,18 +107,8 @@ impl<F: FieldExt> FibonacciChip<F> {
                 self.config.selector.enable(&mut region, 0)?;
 
                 // Copy the value from b & c in previous row to a & b in current row
-                prev_b.copy_advice(
-                    || "a",
-                    &mut region,
-                    self.config.col_a,
-                    0,
-                )?;
-                prev_c.copy_advice(
-                    || "b",
-                    &mut region,
-                    self.config.col_b,
-                    0,
-                )?;
+                prev_b.copy_advice(|| "a", &mut region, self.config.col_a, 0)?;
+                prev_c.copy_advice(|| "b", &mut region, self.config.col_b, 0)?;
 
                 let c_cell = region.assign_advice(
                     || "c",

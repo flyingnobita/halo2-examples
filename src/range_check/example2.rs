@@ -1,3 +1,5 @@
+#![allow(unused)]
+
 use halo2_proofs::{
     arithmetic::FieldExt,
     circuit::{AssignedCell, Layouter, Value},

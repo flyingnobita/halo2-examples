@@ -120,7 +120,7 @@ mod tests {
     use halo2_proofs::{dev::MockProver, pasta::Fp};
 
     #[test]
-    fn test_example3() {
+    fn fibonacci_example3() {
         let circuit = FunctionCircuit {
             a: Fp::from(10),
             b: Fp::from(12),
