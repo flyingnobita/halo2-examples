@@ -125,7 +125,7 @@ mod tests {
         let k = 4;
         const RANGE: usize = 8; // 3-bit value
 
-        // Successful cases
+        // Successful cases [0..8)
         for i in 0..RANGE {
             let circuit = MyCircuit::<Fp, RANGE> {
                 value: Value::known(Fp::from(i as u64).into()),
