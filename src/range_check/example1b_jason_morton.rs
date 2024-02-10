@@ -4,9 +4,9 @@ use halo2_proofs::{
     arithmetic::FieldExt, // the field element trait
     circuit::{
         floor_planner::V1,
-        AssignedCell, // a value Value<V> together with its global location as a Cell with region_index, row_offset, and column
-        Layouter,     // layout strategy and accepter struct, a bit like a Writer
-        Value,        // basically an Option<V>, where Some(v) is called known and None is unknown
+        // AssignedCell, // a value Value<V> together with its global location as a Cell with region_index, row_offset, and column
+        Layouter, // layout strategy and accepter struct, a bit like a Writer
+        Value,    // basically an Option<V>, where Some(v) is called known and None is unknown
     },
     plonk::{
         Advice,           // empty struct to mark Advice columns
@@ -160,7 +160,7 @@ mod tests {
     use halo2_proofs::{
         dev::{FailureLocation, MockProver, VerifyFailure},
         pasta::Fp,
-        plonk::{Any, Circuit},
+        plonk::Any,
     };
 
     use super::*;
